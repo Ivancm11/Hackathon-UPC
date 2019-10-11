@@ -6,6 +6,12 @@
 	
 	$db = mysqli_connect($hostname,$username,$password,$database);
 	
+	 if(! $db ) {
+		die('Could not connect: ' . mysqli_error());
+	 }
+	 echo 'Connected successfully';
+	 
+	
 ?>
 
 <html>
@@ -16,27 +22,17 @@
 	
 	<body>
 		<h1>My First Heading</h1>
-		<?php echo "<h1>Failed to submit data</h1>"; ?>
 		<p>My first paragraph.</p>
 		
 	<?php
-		$query = "SELECT * FROM test1";
+		$query = "SELECT * FROM test2";
 		mysqli_query($db, $query) or die('Error querying database.');
 
 		$result = mysqli_query($db, $query);
-		$row = mysqli_fetch_array($result);
-
+		
 		while ($row = mysqli_fetch_array($result)) {
-			echo    "
-					<tr>
-						<td>".$row['asd']."</td>
-					</tr>
-				";
-
+			echo  "NAME: ".$row['Name']. "    Age: " . $row['Age'];
 		}
-	?>
-	<?php 
-		echo "hi"
 	?>
 	</body>
 	
