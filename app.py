@@ -1,10 +1,11 @@
 from flask import Flask
+from flask import send_from_directory, redirect
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='')
 
 @app.route("/")
 def main():
-    return "hola"
+    return redirect("index.html")
 
 @app.route("/hola", methods=["GET"])
 def holita():
