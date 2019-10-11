@@ -1,10 +1,11 @@
 <?php
-    $hostname = 'remotemysql.com';
+    $hostname = 'remotemysql.com:3306';
     $username = '3sRxPqRiLy';
-    $password = 'NV0qqXByHh';
+    $password = 'dhpwyt9ufA';
     $database = '3sRxPqRiLy';
 	
-	$connect = new mysqli($hostname,$username,$password,$database);
+	$db = mysqli_connect($hostname,$username,$password,$database);
+	
 ?>
 
 <html>
@@ -15,6 +16,7 @@
 	
 	<body>
 		<h1>My First Heading</h1>
+		<?php echo "<h1>Failed to submit data</h1>"; ?>
 		<p>My first paragraph.</p>
 		
 	<?php
@@ -25,9 +27,16 @@
 		$row = mysqli_fetch_array($result);
 
 		while ($row = mysqli_fetch_array($result)) {
-			echo $row['asd'] . ' ' . $row['asd'];
-			echo "hi";
+			echo    "
+					<tr>
+						<td>".$row['asd']."</td>
+					</tr>
+				";
+
 		}
+	?>
+	<?php 
+		echo "hi"
 	?>
 	</body>
 	
