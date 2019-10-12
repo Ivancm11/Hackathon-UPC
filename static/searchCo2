@@ -34,10 +34,6 @@
             <a class="nav-link" href="index.html">Home
             </a>
           </li>
-		  <li class="nav-item">
-            <a class="nav-link" href="searchCo2.html">Check CO2
-            </a>
-          </li>
           <li class="nav-item active">
             <a class="nav-link" href="#">Search food name
 			    <span class="sr-only">(current)</span>
@@ -52,7 +48,7 @@
   <!-- Page Content -->
   <div class="container" style="margin-bottom:110px; margin-top:100px">
 
-	<h3>Write the name:</h3>
+	<h3>Write your name:</h3>
 	  <div class="form-group">
 		<label for="exampleInputEmail1">Name:</label>
 		<input type="text" class="form-control" id="the-file" aria-describedby="emailHelp" placeholder="Enter name" name="name" type="text">

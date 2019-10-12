@@ -35,12 +35,12 @@
             </a>
           </li>
 		  <li class="nav-item">
-            <a class="nav-link" href="searchCo2.html">Check CO2
+            <a class="nav-link active" href="#">Check CO2
+						    <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Search food name
-			    <span class="sr-only">(current)</span>
+          <li class="nav-item">
+            <a class="nav-link" href="searchName.html">Search food name
 			</a>
           </li>
 
@@ -50,22 +50,35 @@
   </nav>
 
   <!-- Page Content -->
-  <div class="container" style="margin-bottom:110px; margin-top:100px">
+  <div class="container" style="margin-bottom:110px; margin-top:75px">
 
-	<h3>Write the name:</h3>
-	  <div class="form-group">
-		<label for="exampleInputEmail1">Name:</label>
-		<input type="text" class="form-control" id="the-file" aria-describedby="emailHelp" placeholder="Enter name" name="name" type="text">
-		<small id="emailHelp" class="form-text text-muted">We'll never share your data with anyone else.</small>
-	  </div>
-	  <button class="btn btn-primary" onclick="load()">Submit</button>
-
+	<h3>Write the data:</h3>
+	<form class="form-inline">		
+	    <div class="form-group mb-2	">
+			<label for="exampleInputEmail1">Calories (Kj):</label>
+			<input style="margin-right:20px" type="text" class="form-control" id="the-file" aria-describedby="emailHelp" placeholder="Enter calories" name="name" type="text">
+		</div>
+	    <div class="form-group mb-2">
+			<label for="exampleInputEmail1">Carbohydrates:</label>
+			<input style="margin-right:20px" type="text" class="form-control" id="the-file" aria-describedby="emailHelp" placeholder="Enter carbohydrates" name="name" type="text">
+		</div>
+		<div class="form-group mb-2">
+			<label for="exampleInputEmail1">Protein:</label>
+			<input style="margin-right:20px" type="text" class="form-control" id="the-file" aria-describedby="emailHelp" placeholder="Enter protein" name="name" type="text">
+		</div>
+		<label for="exampleInputEmail1">Fat:</label>
+		<input type="text" class="form-control" id="the-file" aria-describedby="emailHelp" placeholder="Enter fat" name="name" type="text">		
+		<label for="exampleInputEmail1">Satured fats:</label>
+		<input type="text" class="form-control" id="the-file" aria-describedby="emailHelp" placeholder="Enter satured fats" name="name" type="text">
+		<label for="exampleInputEmail1">Salt:</label>
+		<input type="text" class="form-control" id="the-file" aria-describedby="emailHelp" placeholder="Enter salt" name="name" type="text">
+	  <button class="btn btn-primary" onclick="load()">Calculate</button>
+</form>
     </div>
     <!-- /.row -->
 	
 	<div id="papi" >
   </div>
-  <div id="chartContainer" style="height: 300px; width: 100%; margin-top:-100px"></div>
   <!-- /.container -->
 
   <!-- Footer -->
@@ -80,29 +93,6 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   
-	<script type="text/javascript">
-
-		window.onload = function () {
-		var chart = new CanvasJS.Chart("chartContainer", {
-		title:{
-			text: "Carbon emissions"              
-		},
-		data: [              
-		{
-			// Change type to "doughnut", "line", "splineArea", etc.
-			type: "doughnut",
-			dataPoints: [
-				{ label: "avocado",  y: 10  },
-				{ label: "orange", y: 15  },
-				{ label: "banana", y: 25  },
-				{ label: "mango",  y: 30  },
-			]
-		}
-		]
-		});
-		chart.render();
-		}
-	</script>
 </body>
 
 <script>
