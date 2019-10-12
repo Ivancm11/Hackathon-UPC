@@ -29,12 +29,16 @@
 <script>
 function holita(){
     console.log("hola mundo")
-
     let file = document.getElementById("the-file").files[0];
-let formData = new FormData();
-console.log(photo)
-formData.append("file", file);
-fetch('/upload', {method: "POST", body: formData});
+    let formData = new FormData();
+    console.log(file)
+    formData.append("file", file);
+    fetch('/upload', {method: "POST", body: formData}).then(function(response){
+        response.json().then(function(data){
+            console.log(data)
+        })
+
+    })
 }
 </script>
 </html>
