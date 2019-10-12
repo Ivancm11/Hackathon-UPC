@@ -48,14 +48,12 @@
   <div class="container" style="margin-bottom:110px; margin-top:100px">
 
 	<h3>Write your name:</h3>
-	<form>
 	  <div class="form-group">
 		<label for="exampleInputEmail1">Name:</label>
 		<input type="text" class="form-control" id="the-file" aria-describedby="emailHelp" placeholder="Enter name" name="name" type="text">
 		<small id="emailHelp" class="form-text text-muted">We'll never share your data with anyone else.</small>
 	  </div>
 	  <button class="btn btn-primary" onclick="load()">Submit</button>
-	</form>
 
     </div>
     <!-- /.row -->
@@ -79,7 +77,7 @@
 <script>
 function load(){
     console.log("hola mundo")
-    let file = document.getElementById("the-file").files[0];
+    let file = document.getElementById("the-file").value;
     var formData = {name:file};
     console.log(file)
     fetch('/search', {method: "GET", body: JSON.stringify(formData), headers:{'Content-Type': 'application/json'}}).then(function(response){
