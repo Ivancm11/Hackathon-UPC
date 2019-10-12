@@ -82,7 +82,7 @@ function load(){
     let file = document.getElementById("the-file").files[0];
     var formData = {name:file};
     console.log(file)
-    fetch('/search', {method: "GET", body: JSON.stringify(formData)}, headers:{'Content-Type': 'application/json'}).then(function(response){
+    fetch('/search', {method: "GET", body: JSON.stringify(formData), headers:{'Content-Type': 'application/json'}}).then(function(response){
         response.json().then(function(data){
             console.log(data)
         })
