@@ -7,6 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 
   <title>Loyal cuadrilla</title>
 
@@ -35,7 +40,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Search your name</a>
+            <a class="nav-link" href="searchName.html">Search your name</a>
           </li>
 
         </ul>
@@ -50,7 +55,7 @@
     <header class="jumbotron my-4">
       <h1 style = "text-align:center" class="display-3">EBNJ - Privacy vulnerabilities</h1>
       <p style = "text-align:center" class="lead">Search your name to discover if you appear in the internet</p>
-      <a href="#" style = "width:450px;margin-left:300px" class="btn btn-primary btn-lg">Search your name</a>
+      <a href="searchName.html"" style = "width:450px;margin-left:300px" class="btn btn-primary btn-lg">Search your name</a>
     </header>
 
 
@@ -72,6 +77,14 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+	<div id="like_button_container"></div>
+
+    <!-- We will put our React component inside this div. -->
+    <div id="like_button_container2"></div>
+
+    <!-- Load our React component. -->
+    <script src="like_button.js"></script>
 
 </body>
 
