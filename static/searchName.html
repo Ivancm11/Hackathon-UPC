@@ -61,7 +61,6 @@
 	
 	<div id="papi" >
   </div>
-  <div id="chartContainer" style="height: 300px; width: 100%; margin-top:-100px"></div>
   <!-- /.container -->
 
   <!-- Footer -->
@@ -78,7 +77,8 @@
   
 	<script type="text/javascript">
 
-		window.onload = function () {
+	  function plot (data) {
+      console.log(data);
 		var chart = new CanvasJS.Chart("chartContainer", {
 		title:{
 			text: "Carbon emissions"              
@@ -86,13 +86,8 @@
 		data: [              
 		{
 			// Change type to "doughnut", "line", "splineArea", etc.
-			type: "doughnut",
-			dataPoints: [
-				{ label: "avocado",  y: 10  },
-				{ label: "orange", y: 15  },
-				{ label: "banana", y: 25  },
-				{ label: "mango",  y: 30  },
-			]
+			type: "column",
+			dataPoints: data
 		}
 		]
 		});
@@ -122,22 +117,24 @@ function load(){
             if(data['data'].length == 0)
               return;
             div = document.createElement("child")
-            let table = `<div id="child"> 		
+            let table = `<div id="chartContainer" style="height: 300px; width: 100%; margin-top:-20px"></div>`
+            table += `<div id="child"> 		
                                 <table class="table">
                                   <thead>
                                     <tr>
                                       <th scope="col">#</th>
                                       <th scope="col">Name</th>
-                                      <th scope="col">Type</th>
-                                      <th scope="col">Energy</th>
+                                      <th scope="col">Calories</th>
+                                      <th scope="col">Carbohydrates</th>
+                                      <th scope="col">Protein</th>
                                       <th scope="col">Fat</th>
-                                      <th scope="col">Sugar</th>
-                                      <th scope="col">C02</th>
-                                    <th scope="col">H20</th>
+                                      <th scope="col">Saturated Fat</th>
+                                      <th scope="col">Salt</th>
+                                    <th scope="col">CO2</th>
                                     </tr>
                                   </thead>
                                   <tbody>`
-
+            let stats = []
             for(let i=0; i< data['data'].length; i++){
               console.log(data['data'][i]);
               // DIbujar 
@@ -146,22 +143,28 @@ function load(){
                 <tr>
                   <th scope="row">${i}</th>
                   <td>${food['name']}</td>
-                  <td>${food['type']}</td>
-                  <td>${food['energy']}</td>
-                  <td>${food['grasas']}</td>
-                  <td>${food['sugar']}</td>
-                  <td>${food['CO2']}</td>
-                  <td>${food['H2O']}</td>
+                  <td>${food['calories']}</td>
+                  <td>${food['carbohydrates']}</td>
+                  <td>${food['protein']}</td>
+                  <td>${food['fat']}</td>
+                  <td>${food['saturatedFats']}</td>
+                  <td>${food['salt']}</td>
+                  <td>${food['co2']}</td>
                 </tr>`
+
+                stats.push({label:food['name'], y: food['co2']})
+
             }
             
+
             table += '</tbody></table></div>'
+            
 
             div.innerHTML = table
             document.getElementById('papi').appendChild(div);
+            plot(stats);
 
         })
-
         
 
     })
@@ -182,7 +185,6 @@ input.onkeypress = function(e){
 
 
 }
-
 </script>
 
 </html>
