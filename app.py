@@ -14,9 +14,6 @@ cnx = mysql.connector.connect(host='remotemysql.com',
                             port=3306)
 cursor = cnx.cursor()
 
-def computeCo2(calories, carbohydrates, protein, fat, saturatedFats, salt, co2):
-    return 0.0
-
 @app.route("/")
 def main():
     return redirect("index.html")
@@ -83,7 +80,7 @@ def compute_co2():
     salt = request.args.get('salt')
     co2 = request.args.get('co2')
 
-    result_json = {'result':computeCo2(calories, carbohydrates, protein, fat, saturatedFats, salt, co2)}
+    result_json = {'result':process(calories, carbohydrates, protein, fat, saturatedFats, salt, co2)}
 
     return jsonify(result_json)
 
