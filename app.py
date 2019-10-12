@@ -43,8 +43,8 @@ def search():
     
     name_and_surnames = request.args.get('name')
     # get name
-    name_and_surnames = name_and_surnames.split(" ")
     print(name_and_surnames)
+    name_and_surnames = name_and_surnames.split(" ")
 
     name = name_and_surnames[0]
     if len(name_and_surnames) == 4:
@@ -76,7 +76,7 @@ def search():
     #query =  "SELECT * FROM informations"
     #cursor.execute(query)
 
-    for (name, surname1, surname2, dni, pdfid) in cursor:
+    for (name, surname1, surname2, dni, pdfid, extrainfo) in cursor:
         print((name, surname1, surname2, dni, pdfid))
 
         result_json["data"].append({

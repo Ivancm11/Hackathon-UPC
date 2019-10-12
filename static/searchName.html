@@ -80,9 +80,30 @@ function load(){
     let file = document.getElementById("the-file").value;
     var formData = {name:file};
     console.log(file)
+
+    divQueries = []
+    if (divQueries.length != 0){
+      for(div in divQueries){
+        div.remove();
+      }
+    }
     fetch('/search?name='+file, {method: "GET", headers:{'Content-Type': 'application/json'}}).then(function(response){
         response.json().then(function(data){
-            console.log(data)
+            for(let i=0; i< data['data'].length; i++){
+              console.log(data['data'][i]);
+              // DIbujar 
+              let div = document.createElement("child" + str(i))
+              div.innerHTML = `
+
+              
+              
+              ` + asd + `asda` + name + ``
+              document.getElementById("papi").appendChild(div)
+              divQueries.append(div)
+            }
+            
+            
+
         })
 
     })
