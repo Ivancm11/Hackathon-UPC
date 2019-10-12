@@ -7,8 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
-  <title>Loyal cuadrilla</title>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  
+  <title>Loyal cuadrilla - FOOTPRINT</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +24,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Your privacy over the internet</a>
+      <a class="navbar-brand" href="#">Food Footprint</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -34,7 +35,7 @@
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Search your name
+            <a class="nav-link" href="#">Search food name
 			    <span class="sr-only">(current)</span>
 			</a>
           </li>
@@ -59,8 +60,8 @@
     <!-- /.row -->
 	
 	<div id="papi" >
-
   </div>
+  <div id="chartContainer" style="height: 300px; width: 100%; margin-top:-100px"></div>
   <!-- /.container -->
 
   <!-- Footer -->
@@ -74,6 +75,30 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+	<script type="text/javascript">
+
+		window.onload = function () {
+		var chart = new CanvasJS.Chart("chartContainer", {
+		title:{
+			text: "Carbon emissions"              
+		},
+		data: [              
+		{
+			// Change type to "doughnut", "line", "splineArea", etc.
+			type: "doughnut",
+			dataPoints: [
+				{ label: "avocado",  y: 10  },
+				{ label: "orange", y: 15  },
+				{ label: "banana", y: 25  },
+				{ label: "mango",  y: 30  },
+			]
+		}
+		]
+		});
+		chart.render();
+		}
+	</script>
 </body>
 
 <script>
@@ -158,10 +183,6 @@ input.onkeypress = function(e){
 
 }
 
-</script>
-
-<script>
-	
 </script>
 
 </html>

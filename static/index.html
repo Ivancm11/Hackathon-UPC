@@ -12,8 +12,9 @@
   <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
   <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-  <title>Loyal cuadrilla</title>
+  <title>Loyal cuadrilla - FOOTPRINT</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +29,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Your privacy over the internet</a>
+      <a class="navbar-brand" href="#">Food Footprint</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -40,7 +41,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="searchName.html">Search your name</a>
+            <a class="nav-link" href="searchName.html">Search food name</a>
           </li>
 
         </ul>
@@ -53,9 +54,9 @@
 
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
-      <h1 style = "text-align:center" class="display-3">EBNJ - Privacy vulnerabilities</h1>
-      <p style = "text-align:center" class="lead">Search your name to discover if you appear in the internet</p>
-      <a href="searchName.html"" style = "width:450px;margin-left:300px" class="btn btn-primary btn-lg">Search your name</a>
+      <h1 style = "text-align:center" class="display-3">EBNJ - Food carbon emissions</h1>
+      <p style = "text-align:center" class="lead">Search a food to check its carbon emission</p>
+      <a href="searchName.html"" style = "width:450px;margin-left:300px" class="btn btn-primary btn-lg">Search </a>
     </header>
 
 
@@ -78,13 +79,36 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   
-	<div id="like_button_container"></div>
-
-    <!-- We will put our React component inside this div. -->
-    <div id="like_button_container2"></div>
+	
+	<div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
     <!-- Load our React component. -->
     <script src="like_button.js"></script>
+
+<script type="text/javascript">
+
+window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer", {
+		title:{
+			text: "My First Chart in CanvasJS"              
+		},
+		data: [              
+		{
+			// Change type to "doughnut", "line", "splineArea", etc.
+			type: "column",
+			dataPoints: [
+				{ label: "apple",  y: 10  },
+				{ label: "orange", y: 15  },
+				{ label: "banana", y: 25  },
+				{ label: "mango",  y: 30  },
+				{ label: "grape",  y: 28  }
+			]
+		}
+		]
+	});
+	chart.render();
+}
+</script>
 
 </body>
 
