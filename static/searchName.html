@@ -59,35 +59,7 @@
     <!-- /.row -->
 	
 	<div id="papi" >
-	
-		<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Type</th>
-      <th scope="col">Energy</th>
-      <th scope="col">Fat</th>
-      <th scope="col">Sugar</th>
-      <th scope="col">C02</th>
-	  <th scope="col">H20</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Avocado</td>
-      <td>Vegetable</td>
-      <td>100</td>
-	  <td>23</td>
-      <td>12</td>
-      <td>99</td>
-	  <td>77</td>
-    </tr>
-  </tbody>
-</table>
-		
-	</div>
+
   </div>
   <!-- /.container -->
 
@@ -105,35 +77,61 @@
 </body>
 
 <script>
+  let div = null;
 function load(){
     console.log("hola mundo")
     let file = document.getElementById("the-file").value;
     var formData = {name:file};
     console.log(file)
 
-    divQueries = []
-    if (divQueries.length != 0){
-      for(div in divQueries){
+    if (div != null){
         div.remove();
-      }
+        div = null;
     }
     fetch('/search?name='+file, {method: "GET", headers:{'Content-Type': 'application/json'}}).then(function(response){
         response.json().then(function(data){
+            div = document.createElement("child")
+            let table = `<div id="child"> 		
+                                <table class="table">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">#</th>
+                                      <th scope="col">Name</th>
+                                      <th scope="col">Type</th>
+                                      <th scope="col">Energy</th>
+                                      <th scope="col">Fat</th>
+                                      <th scope="col">Sugar</th>
+                                      <th scope="col">C02</th>
+                                    <th scope="col">H20</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>`
+
             for(let i=0; i< data['data'].length; i++){
               console.log(data['data'][i]);
               // DIbujar 
-              let div = document.createElement("child" + str(i))
-              div.innerHTML = ''
-
-              
-              
-              document.getElementById("papi").appendChild(div)
-              divQueries.append(div)
+              food = data['data'][i];
+                table += `    
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Avocado</td>
+                  <td>Vegetable</td>
+                  <td>100</td>
+                  <td>23</td>
+                  <td>12</td>
+                  <td>99</td>
+                  <td>77</td>
+                </tr>`
             }
             
-            
+            table += '</tbody></table></div>'
+
+            div.innerHTML = table
+            document.getElementById('papi').appendChild(div);
 
         })
+
+        
 
     })
 }
