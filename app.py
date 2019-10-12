@@ -49,21 +49,38 @@ def search():
     print(name)
    
     # return json with data
-    query = "SELECT * FROM foods WHERE name LIKE '%{}%'".format(name)
+    query = "SELECT * FROM foods2 WHERE name LIKE '%{}%'".format(name)
     cursor.execute(query)
     
-    for (name, type_, energy, grasas, sugar, h2o, co2) in cursor:
-        print((name, type_, energy, grasas, sugar, h2o, co2))
+    for (name, calories, carbohydrates, protein, fat, saturatedFats, salt, co2) in cursor:
 
         result_json["data"].append({
             "name":name,
-            "type":type_,
-            "energy":energy,
-            "grasas": grasas,
-            "sugar":sugar,
-            "H2O":h2o,
-            "CO2":co2,
+            "calories":calories,
+            "carbohydrates":carbohydrates,
+            "protein": protein,
+            "fat":fat,
+            "saturatedFats":saturatedFats,
+            "salt":salt,
+            "co2":co2,
         })
+
+    return jsonify(result_json)
+
+
+@app.route("/computeCo2", methods=['GET'])
+def compute_co2():
+    result_json = {}
+    
+    calories = request.args.get('name')
+    carbohydrates = request.args.get('carbohydrates')
+    protein = request.args.get('protein')
+    fat = request.args.get('fat')
+    saturatedFats = request.args.get('saturatedFats')
+    salt = request.args.get('salt')
+    co2 = request.args.get('co2')
+
+    result_json = {'result':process(calories, carbohydrates, protein, fat, saturatedFats, salt, co2)}
 
     return jsonify(result_json)
 
