@@ -42,7 +42,10 @@ def search():
     result_json = {"data" : []}
     
     name = request.args.get('name')
-   
+    
+    if len(name) == 0:
+        return jsonify(result_json)
+
     print(name)
    
     # return json with data
@@ -58,8 +61,8 @@ def search():
             "energy":energy,
             "grasas": grasas,
             "sugar":sugar,
-            "H20":h2o,
-            "C20":co2,
+            "H2O":h2o,
+            "CO2":co2,
         })
 
     return jsonify(result_json)

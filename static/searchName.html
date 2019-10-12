@@ -78,6 +78,10 @@
 
 <script>
   let div = null;
+
+
+
+
 function load(){
     console.log("hola mundo")
     let file = document.getElementById("the-file").value;
@@ -90,6 +94,8 @@ function load(){
     }
     fetch('/search?name='+file, {method: "GET", headers:{'Content-Type': 'application/json'}}).then(function(response){
         response.json().then(function(data){
+            if(data['data'].length == 0)
+              return;
             div = document.createElement("child")
             let table = `<div id="child"> 		
                                 <table class="table">
@@ -113,14 +119,14 @@ function load(){
               food = data['data'][i];
                 table += `    
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Avocado</td>
-                  <td>Vegetable</td>
-                  <td>100</td>
-                  <td>23</td>
-                  <td>12</td>
-                  <td>99</td>
-                  <td>77</td>
+                  <th scope="row">${i}</th>
+                  <td>${food['name']}</td>
+                  <td>${food['type']}</td>
+                  <td>${food['energy']}</td>
+                  <td>${food['grasas']}</td>
+                  <td>${food['sugar']}</td>
+                  <td>${food['CO2']}</td>
+                  <td>${food['H2O']}</td>
                 </tr>`
             }
             
@@ -135,6 +141,23 @@ function load(){
 
     })
 }
+
+
+// Run when enter is hit in input
+var input = document.getElementById("the-file")
+input.onkeypress = function(e){
+  if(!e) e = window.event;
+  var keyCode = e.keyCode || w.which;
+
+  if(keyCode == '13'){
+
+    load()
+    return false;
+  }
+
+
+}
+
 </script>
 
 <script>
